@@ -20,18 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   );
 });
-function toggleAnswer(element) {
-  const answer = element.nextElementSibling;
-  const buttonImg = element.querySelector(".toggle-button img"); 
 
-  if (answer.style.display === "none" || answer.style.display === "") {
-    answer.style.display = "block";
-    buttonImg.src = "/image/how/icon-park-outline_right.png"; 
-  } else {
-    answer.style.display = "none";
-    buttonImg.src = "/image/how/icon-park-outline_right.png"; 
-  }
-}
 
 const cards = document.querySelectorAll(".card");
 
@@ -61,83 +50,41 @@ cards.forEach(card => {
 
 
 
-// function toggleAnswer(element) {
-//   const answer = element.nextElementSibling;
-//   const buttonImg = element.querySelector(".toggle-button img"); 
-
-//   if (answer.style.display === "none" || answer.style.display === "") {
-//     answer.style.display = "block";
-//   buttonImg.src = "/image/faq/arrrow_up.png";
-//   } else {
-//     answer.style.display = "none";
-//     buttonImg.src = "/image/faq/arrrow_down.png";
-//   }
-// }
-
-// function toggleAnswer(element) {
-//   const allAnswers = document.querySelectorAll(".how-answer");
-//   const allButtons = document.querySelectorAll(".toggle-button img");
-//   const answer = element.nextElementSibling;
-//   const buttonImg = element.querySelector(".toggle-button img");
-
-//   // Закриваємо всі відкриті відповіді
-//   allAnswers.forEach((ans) => {
-//     if (ans !== answer) {
-//       ans.style.display = "none";
-//     }
-//   });
-
-//   // Скидаємо всі кнопки до "arrow_down"
-//   allButtons.forEach((img) => {
-//     if (img !== buttonImg) {
-//       img.src = "/image/faq/arrrow_down.png";
-//     }
-//   });
-
-//   // Тоглуємо поточну відповідь
-//   if (answer.style.display === "none" || answer.style.display === "") {
-//     answer.style.display = "block";
-//     buttonImg.src = "/image/faq/arrrow_up.png";
-//   } else {
-//     answer.style.display = "none";
-//     buttonImg.src = "/image/faq/arrrow_down.png";
-//   }
-// }
 
 
 function toggleAnswer(element) {
   const allAnswers = document.querySelectorAll(".how-answer");
   const allButtons = document.querySelectorAll(".toggle-button img");
-  const howContainer = document.querySelector(".how"); // Контейнер, висоту якого будемо змінювати
+  const howContainer = document.querySelector(".how"); 
   const answer = element.nextElementSibling;
   const buttonImg = element.querySelector(".toggle-button img");
 
-  // Закриваємо всі відкриті відповіді
+ 
   allAnswers.forEach((ans) => {
     ans.style.display = "none";
   });
 
-  // Скидаємо всі кнопки до "arrow_down"
+ 
   allButtons.forEach((img) => {
     img.src = "/image/faq/arrrow_down.png";
   });
 
-  // Тоглуємо поточну відповідь
+
   if (answer.style.display === "none" || answer.style.display === "") {
     answer.style.display = "block";
     buttonImg.src = "/image/faq/arrrow_up.png";
 
-    // Збільшуємо висоту .how, враховуючи висоту відкритої відповіді
-    const answerHeight = answer.offsetHeight; // Висота блоку відповіді
-    const currentHeight = howContainer.offsetHeight; // Поточна висота контейнера
-    const newHeight = Math.max(currentHeight, 630 + answerHeight); // Розрахунок нової висоти
+   
+    const answerHeight = answer.offsetHeight;
+    const currentHeight = howContainer.offsetHeight;
+    const newHeight = Math.max(currentHeight, 630 + answerHeight);
 
     howContainer.style.height = `${newHeight}px`;
   } else {
     answer.style.display = "none";
     buttonImg.src = "/image/faq/arrrow_down.png";
 
-    // Якщо всі відповіді закриті, повертаємо стандартну висоту
+  
     howContainer.style.height = "auto";
   }
 }
